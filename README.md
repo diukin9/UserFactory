@@ -36,5 +36,5 @@ protected virtual async Task CreateUser(ApplicationUser missedUser, UserManager<
 protected List<ApplicationUser> GetGitLabUsers()
 ```
 ### Примечание: 
-* Метод CreateUser перегружаемый (виртуальный). При необходимости вы можете наследоваться от этого класса и реализовать его под свои нужды;
+* Метод CreateUser перегружаемый (виртуальный). Вы можете наследоваться от этого класса и реализовать его под свои нужды;
 * Сравнение аккаунтов происходит исключительно по username и email.
