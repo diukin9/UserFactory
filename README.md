@@ -10,7 +10,7 @@ public class YourClass
 
     public YourClass(UserManager<YourModel> userManager, string hostUrl, string token)
     {
-        this._userFactory = new UserFactory<YourModel>(hostUrl, token)
+        this._userFactory = new UserFactory<YourModel>(hostUrl, token);
         this._userManager = userManager;
     }
     
