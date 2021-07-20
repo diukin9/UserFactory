@@ -1,9 +1,6 @@
 # Что такое UserFactory? <br/>
 UserFactory - это библиотека, дополняюшая базу данных пользователей, наследуемых от IdentityUser, недостающими пользователями с сервиса GitLab <br/>
 
-### Примечание 1: 
-* Метод CreateUser перегружаемый (виртуальный). При необходимости вы можете наследоваться от этого класса и реализовать его под свои нужды;
-* Сравнение аккаунтов происходит исключительно по username и email.
 ### Применение:
 ```C#
 public class YourClass
@@ -38,3 +35,6 @@ protected virtual async Task CreateUser(ApplicationUser missedUser, UserManager<
 ```C#
 protected List<ApplicationUser> GetGitLabUsers()
 ```
+### Примечание: 
+* Метод CreateUser перегружаемый (виртуальный). При необходимости вы можете наследоваться от этого класса и реализовать его под свои нужды;
+* Сравнение аккаунтов происходит исключительно по username и email.
