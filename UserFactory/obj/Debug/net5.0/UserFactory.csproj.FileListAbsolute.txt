@@ -1,0 +1,12 @@
+C:\Users\petrd\source\repos\UserFactory\UserFactory\bin\Debug\net5.0\UserFactory.deps.json
+C:\Users\petrd\source\repos\UserFactory\UserFactory\bin\Debug\net5.0\UserFactory.dll
+C:\Users\petrd\source\repos\UserFactory\UserFactory\bin\Debug\net5.0\ref\UserFactory.dll
+C:\Users\petrd\source\repos\UserFactory\UserFactory\bin\Debug\net5.0\UserFactory.pdb
+C:\Users\petrd\source\repos\UserFactory\UserFactory\obj\Debug\net5.0\UserFactory.csproj.AssemblyReference.cache
+C:\Users\petrd\source\repos\UserFactory\UserFactory\obj\Debug\net5.0\UserFactory.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\petrd\source\repos\UserFactory\UserFactory\obj\Debug\net5.0\UserFactory.AssemblyInfoInputs.cache
+C:\Users\petrd\source\repos\UserFactory\UserFactory\obj\Debug\net5.0\UserFactory.AssemblyInfo.cs
+C:\Users\petrd\source\repos\UserFactory\UserFactory\obj\Debug\net5.0\UserFactory.csproj.CoreCompileInputs.cache
+C:\Users\petrd\source\repos\UserFactory\UserFactory\obj\Debug\net5.0\UserFactory.dll
+C:\Users\petrd\source\repos\UserFactory\UserFactory\obj\Debug\net5.0\ref\UserFactory.dll
+C:\Users\petrd\source\repos\UserFactory\UserFactory\obj\Debug\net5.0\UserFactory.pdb
