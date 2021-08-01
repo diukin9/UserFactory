@@ -56,14 +56,14 @@ public class AdvancedUserFactory : UserFactory.UserFactory<ApplicationUser>
    }
    
    // Переопределение функции создания пользователей
-   protected override async Task CreateUserAsync(User user)
+   protected override async Task CreateUserAsync(NGitLab.Models.User user)
    {
       var newUser = _mapper.Map<ApplicationUser>(user);
       await _userManager.CreateAsync(newUser);
    }
 
    // Переопределение функции обновления пользователей
-   protected override async Task UpdateUserAsync(User gitlabUser, ApplicationUser user)
+   protected override async Task UpdateUserAsync(NGitLab.Models.User gitlabUser, ApplicationUser user)
    {
       await base.UpdateUserAsync(gitlabUser, user);
       var flag = false;
