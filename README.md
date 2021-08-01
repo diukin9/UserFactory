@@ -15,6 +15,29 @@ await userFactory.CompareUsersAsync();
 ```
 4. Дождитесь завершения работы метода и проверяйте базу данных. Все готово!
 
+## Пример использования фабрики пользователей на примере ASP.NET Core:
+```C#
+public class ExampleController : Controller
+{
+   private readonly UserFactory<ApplicationUser> _userFactory;
+   private readonly UserManager<ApplicationUser> _userManager;
+
+   public ExampleController(UserManager<ApplicationUser> userManager, IOptions<GitlabSettings> gitlabSettings)
+   {
+      _userManager = userManager;
+      var url = gitlabSettings.Value.HostUrl;
+      var token = gitlabSettings.Value.Token;
+      _userFactory = new AdvancedUserFactory(mapper, _userManager, url, token);
+   }
+
+   public async Task<IActionResult> UpdateGitlabUsers()
+   {
+      await _userFactory.CompareUsersAsync();
+      return RedirectToAction(nameof(Index));
+   }
+}
+```
+
 ## Пример переопределения методов создания и обновления пользователей в UserFactory:
 ```C#
 // Наследуемся от UserFactory, указывая модель пользователя, с которой работает наш сервис
@@ -32,7 +55,7 @@ public class AdvancedUserFactory : UserFactory.UserFactory<ApplicationUser>
        _mapper = mapper;
    }
    
-   // Переопределению функции создания пользователей
+   // Переопределение функции создания пользователей
    protected override async Task CreateUserAsync(User user)
    {
       var newUser = _mapper.Map<ApplicationUser>(user);
@@ -153,7 +176,7 @@ public void ConfigureServices(IServiceCollection services)
       return View(nameof(Login));
   }
 ```
-7. Осталось только добавить кнопку/ссылку/форму во View, ссылающуюся на метод GitlabAuthenticate, например:
+7. Осталось только добавить кнопку/ссылку/форму и т.п. во View-представлении, ссылающуюся на метод GitlabAuthenticate, например:
 ```C#
   <a asp-controller="ControllerName" asp-action="GitlabAuthenticate" asp-route-returnUrl="@Context.Request.Path">
 ```
