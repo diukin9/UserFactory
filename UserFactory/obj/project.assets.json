@@ -221,6 +221,18 @@
           "lib/netcoreapp3.0/Microsoft.Extensions.Primitives.dll": {}
         }
       },
+      "NGitLab/6.10.5": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "5.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/NGitLab.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NGitLab.dll": {}
+        }
+      },
       "System.Collections.Immutable/5.0.0": {
         "type": "package",
         "compile": {
@@ -246,6 +258,19 @@
         },
         "runtime": {
           "lib/net5.0/System.Diagnostics.DiagnosticSource.dll": {}
+        }
+      },
+      "GitlabService/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "NGitLab": "6.10.5"
+        },
+        "compile": {
+          "bin/placeholder/GitlabService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/GitlabService.dll": {}
         }
       }
     }
@@ -590,6 +615,21 @@
         "version.txt"
       ]
     },
+    "NGitLab/6.10.5": {
+      "sha512": "QlMsnx/O5qIJ12FjnhpZPQUaK5HO7KmmN3txNQZXHeHtjPTsy+VDjaGS3bLgC+M0usnsLReBtEsPodIEAc+z3g==",
+      "type": "package",
+      "path": "ngitlab/6.10.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.md",
+        "lib/net45/NGitLab.dll",
+        "lib/netstandard2.0/NGitLab.dll",
+        "ngitlab.6.10.5.nupkg.sha512",
+        "ngitlab.nuspec"
+      ]
+    },
     "System.Collections.Immutable/5.0.0": {
       "sha512": "FXkLXiK0sVVewcso0imKQoOxjoPAj42R8HtjjbSjVPAzwDfzoyoznWxgA3c38LDbN9SJux1xXoXYAhz98j7r2g==",
       "type": "package",
@@ -733,10 +773,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "GitlabService/1.0.0": {
+      "type": "project",
+      "path": "../GitlabService/GitlabService.csproj",
+      "msbuildProject": "../GitlabService/GitlabService.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "GitlabService >= 1.0.0",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.8"
     ]
   },
@@ -748,11 +794,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\petrd\\source\\repos\\UserFactory_GitLabIntegration\\UserFactory\\UserFactory.csproj",
+      "projectUniqueName": "C:\\Users\\petrd\\source\\repos\\UserFactory\\UserFactory\\UserFactory.csproj",
       "projectName": "UserFactory",
-      "projectPath": "C:\\Users\\petrd\\source\\repos\\UserFactory_GitLabIntegration\\UserFactory\\UserFactory.csproj",
+      "projectPath": "C:\\Users\\petrd\\source\\repos\\UserFactory\\UserFactory\\UserFactory.csproj",
       "packagesPath": "C:\\Users\\petrd\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\petrd\\source\\repos\\UserFactory_GitLabIntegration\\UserFactory\\obj\\",
+      "outputPath": "C:\\Users\\petrd\\source\\repos\\UserFactory\\UserFactory\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files\\Microsoft VS\\Shared\\NuGetPackages",
@@ -774,7 +820,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\petrd\\source\\repos\\UserFactory\\GitlabService\\GitlabService.csproj": {
+              "projectPath": "C:\\Users\\petrd\\source\\repos\\UserFactory\\GitlabService\\GitlabService.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

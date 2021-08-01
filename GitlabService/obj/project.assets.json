@@ -145,11 +145,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\petrd\\source\\repos\\UserFactory_GitLabIntegration\\GitlabService\\GitlabService.csproj",
+      "projectUniqueName": "C:\\Users\\petrd\\source\\repos\\UserFactory\\GitlabService\\GitlabService.csproj",
       "projectName": "GitlabService",
-      "projectPath": "C:\\Users\\petrd\\source\\repos\\UserFactory_GitLabIntegration\\GitlabService\\GitlabService.csproj",
+      "projectPath": "C:\\Users\\petrd\\source\\repos\\UserFactory\\GitlabService\\GitlabService.csproj",
       "packagesPath": "C:\\Users\\petrd\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\petrd\\source\\repos\\UserFactory_GitLabIntegration\\GitlabService\\obj\\",
+      "outputPath": "C:\\Users\\petrd\\source\\repos\\UserFactory\\GitlabService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files\\Microsoft VS\\Shared\\NuGetPackages",

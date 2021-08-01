@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using ProjectProf.GitlabService;
 using System;
 using System.Threading.Tasks;
 

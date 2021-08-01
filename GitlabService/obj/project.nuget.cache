@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8n0/WhHPGiYeTZE05l+VqhjPdUHjLNCUBdRSTHxjEK6TGiPP9DIbJwC0ivG5aFDhm8lIbmqiG+gWeaBQsUuRjQ==",
+  "dgSpecHash": "vdmXneQU4FgHhIzT3C/sfVMifnmzLtLUTRT+DO8rLUl/+1QJix2Af6tdvTmCZUi2kgHO4gKC2b7M3AqmqOdfMQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\petrd\\source\\repos\\UserFactory_GitLabIntegration\\GitlabService\\GitlabService.csproj",
+  "projectFilePath": "C:\\Users\\petrd\\source\\repos\\UserFactory\\GitlabService\\GitlabService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\petrd\\.nuget\\packages\\ngitlab\\6.10.5\\ngitlab.6.10.5.nupkg.sha512",
     "C:\\Users\\petrd\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
