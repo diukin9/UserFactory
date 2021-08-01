@@ -22,11 +22,11 @@ await userFactory.CompareUsersAsync();
     * Перейдите в гитлаб
     * Кликните на свою аватарку в правом верхнем углу
     * Выберите вкладку "Edit Profile"
-    * На левой панели выберите "Applications"
+    * На левой панельке выберите "Applications"
     * Заполните графу "Name" (имя можно придумать любое)
     * В графу "Redirect URI" вставьте ссылку в следующем формате:
-     https://localhost:ПОРТ/signin-gitlab
-     Например: https://localhost:5001/signin-gitlab
+     https://localhost:ПОРТ/signin-gitlab <br>
+     <b>Например</b>: https://localhost:5001/signin-gitlab
     * Отметьте следующие scope: read_user, openid
     * Сохраните приложение. Гитлаб сгенерирует Application ID (тоже самое, что и clientId) и Secret (тоже самое, что и clientSecret). Эти два поля нам понадобятся в скором времени.
 4. В файле appsettings.jsom добавьте следующее:
