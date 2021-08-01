@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "58AlDa3kPeRVLxJ/PHiHr2R8fp4WxCEg91WQDYQieNvvWeIHz5/81DMphzxPxmJjcskmJYioVLyD3E7o05W0/A==",
+  "dgSpecHash": "mXvvoNqK+lclMTxqSYAA3ckTnsucSCc0+i+1H+JzFcAOyyUJf0IN4o+Hz5/u1DnxwG1RuCd+4v3rKgkCbNi8mg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\petrd\\source\\repos\\UserFactory\\UserFactory\\UserFactory.csproj",
+  "projectFilePath": "C:\\Users\\petrd\\source\\repos\\UserFactory_GitLabIntegration\\UserFactory\\UserFactory.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\petrd\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.8\\microsoft.aspnetcore.cryptography.internal.5.0.8.nupkg.sha512",
     "C:\\Users\\petrd\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.8\\microsoft.aspnetcore.cryptography.keyderivation.5.0.8.nupkg.sha512",
@@ -22,7 +22,6 @@
     "C:\\Users\\petrd\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\petrd\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
     "C:\\Users\\petrd\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
-    "C:\\Users\\petrd\\.nuget\\packages\\ngitlab\\6.10.4\\ngitlab.6.10.4.nupkg.sha512",
     "C:\\Users\\petrd\\.nuget\\packages\\system.collections.immutable\\5.0.0\\system.collections.immutable.5.0.0.nupkg.sha512",
     "C:\\Users\\petrd\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "C:\\Users\\petrd\\.nuget\\packages\\system.diagnostics.diagnosticsource\\5.0.1\\system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512"

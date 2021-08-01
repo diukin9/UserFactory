@@ -1,0 +1,52 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "ProjectProf.GitlabService/1.0.0": {
+        "dependencies": {
+          "NGitLab": "6.10.5"
+        },
+        "runtime": {
+          "ProjectProf.GitlabService.dll": {}
+        }
+      },
+      "NGitLab/6.10.5": {
+        "dependencies": {
+          "System.ComponentModel.Annotations": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NGitLab.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.10.5.0"
+          }
+        }
+      },
+      "System.ComponentModel.Annotations/5.0.0": {}
+    }
+  },
+  "libraries": {
+    "ProjectProf.GitlabService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NGitLab/6.10.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QlMsnx/O5qIJ12FjnhpZPQUaK5HO7KmmN3txNQZXHeHtjPTsy+VDjaGS3bLgC+M0usnsLReBtEsPodIEAc+z3g==",
+      "path": "ngitlab/6.10.5",
+      "hashPath": "ngitlab.6.10.5.nupkg.sha512"
+    },
+    "System.ComponentModel.Annotations/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dMkqfy2el8A8/I76n2Hi1oBFEbG1SfxD2l5nhwXV3XjlnOmwxJlQbYpJH4W51odnU9sARCSAgv7S3CyAFMkpYg==",
+      "path": "system.componentmodel.annotations/5.0.0",
+      "hashPath": "system.componentmodel.annotations.5.0.0.nupkg.sha512"
+    }
+  }
+}

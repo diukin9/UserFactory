@@ -1,62 +1,98 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using NGitLab;
-using System.Collections.Generic;
-using System.Linq;
+using System;
 using System.Threading.Tasks;
-using UserFactory.Models;
 
-namespace UserFactory
+namespace ProjectProf.UserFactory
 {
     public class UserFactory<T> where T : IdentityUser, new()
     {
-        private readonly GitLabClient _gitlabClient;
+        public delegate Task CreateUser(NGitLab.Models.User gitlabUser);
+        public delegate Task UpdateUser(NGitLab.Models.User gitlabUser, T user);
 
-        public UserFactory(string hostUrl, string token)
+        protected readonly GitlabService.GitlabService _gitlabService;
+        protected readonly UserManager<T> _userManager;
+        protected CreateUser _functionOfCreatingUser;
+        protected UpdateUser _functionOfUpdatingUser;
+
+        public UserFactory(UserManager<T> userManager, string hostUrl, string token)
         {
-            _gitlabClient = new GitLabClient(hostUrl, token);
+            _functionOfCreatingUser = this.CreateUserAsync;
+            _functionOfUpdatingUser = this.UpdateUserAsync;
+            _gitlabService = new GitlabService.GitlabService(hostUrl, token);
+            _userManager = userManager;
         }
 
-        public async Task AddMissingUsers(List<T> currentUsers, UserManager<T> userManager)
+        public async Task CompareUsersAsync()
         {
-            var mails = currentUsers.Select(x => x.Email).ToList();
-            var usernames = currentUsers.Select(x => x.UserName).ToList();
-            var gitlabUsers = this.GetGitLabUsers();
-            foreach (var user in gitlabUsers)
+            var gitlabUsers = _gitlabService.GetUsers();
+            foreach (var gitlabUser in gitlabUsers)
             {
-                if (!mails.Contains(user.Email) && !usernames.Contains(user.Username))
+                var user = await this.GetUser(gitlabUser);
+                if (gitlabUser == null)
                 {
-                    await CreateUser(user, userManager);
+                    await this._functionOfCreatingUser(gitlabUser);
+                }
+                else
+                {
+                    await this._functionOfUpdatingUser(gitlabUser, user);
                 }
             }
         }
 
-        protected virtual async Task CreateUser(ApplicationUser missUser, UserManager<T> userManager)
+        protected async Task<T> GetUser(NGitLab.Models.User gitlabUser)
         {
-            var user = new T()
+            var user = await _userManager.FindByNameAsync(gitlabUser.Username)
+                ?? await _userManager.FindByEmailAsync(gitlabUser.Email);
+            if (user == null)
             {
-                UserName = missUser.Username,
-                Email = missUser.Email,
-            };
-            var property = typeof(T).GetProperty("Name");
-            if (property != null && property.CanWrite)
-            { 
-                property.SetValue(user, missUser.Name);
+                var emails = _gitlabService.GetEmails(gitlabUser.Username);
+                foreach (var email in emails)
+                {
+                    user = await _userManager.FindByEmailAsync(email);
+                    if (user != null)
+                    {
+                        break;
+                    }
+                }
             }
-            await userManager.CreateAsync(user);
+            return user;
         }
 
-        protected List<ApplicationUser> GetGitLabUsers()
+        protected virtual async Task CreateUserAsync(NGitLab.Models.User gitlabUser)
         {
-            var userQuery = new UserQuery() { IsExternal = true };
-            var externalUsers = _gitlabClient.Users.Get(userQuery)
-                .Select(x => new ApplicationUser(x))
-                .ToList();
-            var users = _gitlabClient.Users.All
-                .Where(user => !user.Name.EndsWith(" Bot") && user.State != "blocked")
-                .Select(x => new ApplicationUser(x))
-                .ToList();
-            users.RemoveAll(externalUsers.Contains);
-            return users;
+            var newUser = new T()
+            {
+                UserName = gitlabUser.Username,
+                Email = gitlabUser.Email,
+                LockoutEnabled = true,
+                LockoutEnd = gitlabUser.State == "blocked" ? DateTimeOffset.MaxValue : DateTimeOffset.MinValue,
+                EmailConfirmed = true
+            };
+            await _userManager.CreateAsync(newUser);
+        }
+
+        protected virtual async Task UpdateUserAsync(NGitLab.Models.User gitlabUser, T user)
+        {
+            var flag = false;
+            if (gitlabUser.State == "blocked" != user.LockoutEnd > DateTime.Now)
+            {
+                user.LockoutEnd = user.LockoutEnd > DateTime.Now ? DateTimeOffset.MinValue : DateTimeOffset.MaxValue;
+                flag = true;
+            }
+            else if (gitlabUser.Email != user.Email)
+            {
+                user.Email = gitlabUser.Email;
+                flag = true;
+            }
+            else if (gitlabUser.Username != user.UserName)
+            {
+                user.UserName = gitlabUser.Username;
+                flag = true;
+            }
+            if (flag)
+            {
+                await _userManager.UpdateAsync(user);
+            }
         }
     }
 }

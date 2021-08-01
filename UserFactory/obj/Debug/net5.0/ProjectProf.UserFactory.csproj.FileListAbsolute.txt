@@ -1,0 +1,15 @@
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\bin\Debug\net5.0\ProjectProf.UserFactory.deps.json
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\bin\Debug\net5.0\ProjectProf.UserFactory.dll
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\bin\Debug\net5.0\ref\ProjectProf.UserFactory.dll
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\bin\Debug\net5.0\ProjectProf.UserFactory.pdb
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\bin\Debug\net5.0\ProjectProf.GitlabService.dll
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\bin\Debug\net5.0\ProjectProf.GitlabService.pdb
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\obj\Debug\net5.0\ProjectProf.UserFactory.csproj.AssemblyReference.cache
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\obj\Debug\net5.0\ProjectProf.UserFactory.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\obj\Debug\net5.0\ProjectProf.UserFactory.AssemblyInfoInputs.cache
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\obj\Debug\net5.0\ProjectProf.UserFactory.AssemblyInfo.cs
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\obj\Debug\net5.0\ProjectProf.UserFactory.csproj.CoreCompileInputs.cache
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\obj\Debug\net5.0\ProjectProf.UserFactory.csproj.CopyComplete
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\obj\Debug\net5.0\ProjectProf.UserFactory.dll
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\obj\Debug\net5.0\ref\ProjectProf.UserFactory.dll
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.UserFactory\obj\Debug\net5.0\ProjectProf.UserFactory.pdb

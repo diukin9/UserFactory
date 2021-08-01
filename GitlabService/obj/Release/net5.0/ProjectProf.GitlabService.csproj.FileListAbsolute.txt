@@ -1,0 +1,12 @@
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.GitlabService\bin\Release\net5.0\ProjectProf.GitlabService.deps.json
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.GitlabService\bin\Release\net5.0\ProjectProf.GitlabService.dll
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.GitlabService\bin\Release\net5.0\ref\ProjectProf.GitlabService.dll
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.GitlabService\bin\Release\net5.0\ProjectProf.GitlabService.pdb
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.GitlabService\obj\Release\net5.0\ProjectProf.GitlabService.csproj.AssemblyReference.cache
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.GitlabService\obj\Release\net5.0\ProjectProf.GitlabService.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.GitlabService\obj\Release\net5.0\ProjectProf.GitlabService.AssemblyInfoInputs.cache
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.GitlabService\obj\Release\net5.0\ProjectProf.GitlabService.AssemblyInfo.cs
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.GitlabService\obj\Release\net5.0\ProjectProf.GitlabService.csproj.CoreCompileInputs.cache
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.GitlabService\obj\Release\net5.0\ProjectProf.GitlabService.dll
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.GitlabService\obj\Release\net5.0\ref\ProjectProf.GitlabService.dll
+C:\Users\petrd\source\repos\ProjectProf\ProjectProf.GitlabService\obj\Release\net5.0\ProjectProf.GitlabService.pdb
