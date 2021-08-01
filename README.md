@@ -18,8 +18,8 @@ await userFactory.CompareUsersAsync();
 ## Дополнение: как добавить сквозную авторизацию через GitLab на примере ASP.NET Core:
 1. Подключите фабрику пользователей по вышеуказанной инструкции, чтобы обновить базу данных
 2. Установите библиотеку AspNet.Security.OAuth.GitLab // Install-Package AspNet.Security.OAuth.GitLab -Version 5.0.9
-3. В гитлабе добавьте новое приложение. Для этого:
-    * Перейдите в гитлаб
+3. В GitLab добавьте новое приложение. Для этого:
+    * Перейдите в GitLab
     * Кликните на свою аватарку в правом верхнем углу
     * Выберите вкладку "Edit Profile"
     * На левой панельке выберите "Applications"
@@ -28,19 +28,15 @@ await userFactory.CompareUsersAsync();
      https://localhost:ПОРТ/signin-gitlab <br>
      <b>Например</b>: https://localhost:5001/signin-gitlab
     * Отметьте следующие scope: read_user, openid
-    * Сохраните приложение. Гитлаб сгенерирует Application ID (тоже самое, что и clientId) и Secret (тоже самое, что и clientSecret). Эти два поля нам понадобятся в скором времени.
+    * Сохраните приложение. GitLab сгенерирует Application ID (тоже самое, что и clientId) и Secret (тоже самое, что и clientSecret). Эти два поля нам понадобятся в скором времени.
 4. В файле appsettings.jsom добавьте следующее:
 ```json
-{
-  ...,
-  "Gitlab": {
-    "HostUrl": "ссылка на ваш хост гитлаба",
+"Gitlab": {
+    "HostUrl": "ссылка на ваш хост GitLab",
     "Token": "ваш токен",
     "ClientId": "clientId сгенерированный в пункте выше",
     "ClientSecret": "clientSecret сгенерированный в пункте вышел"
-  },
-  ...
-}
+},
 ```
 5. В методе Startup.cs добавьте следующее:
 ```C#
