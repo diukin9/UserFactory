@@ -27,7 +27,7 @@ public class ExampleController : Controller
       _userManager = userManager;
       var url = gitlabSettings.Value.HostUrl;
       var token = gitlabSettings.Value.Token;
-      _userFactory = new AdvancedUserFactory(mapper, _userManager, url, token);
+      _userFactory = new UserFactory(_userManager, url, token);
    }
 
    public async Task<IActionResult> UpdateGitlabUsers()
