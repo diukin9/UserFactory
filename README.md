@@ -44,7 +44,7 @@ public void ConfigureServices(IServiceCollection services)
 {
   ...
   var gitlabSettings = new GitlabSettings();
-    Configuration.GetSection("Gitlab").Bind(gitlabSettings);
+  Configuration.GetSection("Gitlab").Bind(gitlabSettings);
   services.AddAuthentication(options => { })
     .AddGitLab(options => {
         options.ClientId = gitlabSettings.ClientId;
@@ -54,6 +54,7 @@ public void ConfigureServices(IServiceCollection services)
         options.UserInformationEndpoint = $"{gitlabSettings.HostUrl}api/v4/user";
         options.CallbackPath = "/signin-gitlab";
     });
+  ...
 }
 ```
 6. В контроллер добавьте следующее (при необходимости переделайте логику методов под себя):
