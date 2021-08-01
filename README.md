@@ -15,6 +15,53 @@ await userFactory.CompareUsersAsync();
 ```
 4. Дождитесь завершения работы метода и проверяйте базу данных. Все готово!
 
+## Пример переопределения методов создания и обновления пользователей в UserFactory:
+```C#
+// Наследуемся от UserFactory, указывая модель пользователя, с которой работает наш сервис
+public class AdvancedUserFactory : UserFactory.UserFactory<ApplicationUser>
+{
+   private readonly IMapper _mapper;
+
+   public AdvancedUserFactory(IMapper mapper, UserManager<ApplicationUser> userManager, string hostUrl, string token) 
+       : base(userManager, hostUrl, token)
+   {
+       // Переопределим делегаты с базовой реализации на новую и переопределенную
+       _functionOfCreatingUser = this.CreateUserAsync;
+       _functionOfUpdatingUser = this.UpdateUserAsync;
+       
+       _mapper = mapper;
+   }
+   
+   // Переопределению функции создания пользователей
+   protected override async Task CreateUserAsync(User user)
+   {
+      var newUser = _mapper.Map<ApplicationUser>(user);
+      await _userManager.CreateAsync(newUser);
+   }
+
+   // Переопределение функции обновления пользователей
+   protected override async Task UpdateUserAsync(User gitlabUser, ApplicationUser user)
+   {
+      await base.UpdateUserAsync(gitlabUser, user);
+      var flag = false;
+      if (gitlabUser.AvatarURL != user.ImagePath)
+      {
+         user.ImagePath = gitlabUser.AvatarURL;
+         flag = true;
+      }
+      else if (gitlabUser.Name != user.Name)
+      {
+         user.Name = gitlabUser.Name;
+         flag = true;
+      }
+      if (flag)
+      {
+         await _userManager.UpdateAsync(user);
+      }
+   }
+}
+```
+
 ## Дополнение: как добавить сквозную авторизацию GitLab на примере ASP.NET Core:
 1. Подключите фабрику пользователей по вышеуказанной инструкции, чтобы обновить базу данных
 2. Установите библиотеку AspNet.Security.OAuth.GitLab // Install-Package AspNet.Security.OAuth.GitLab -Version 5.0.9
@@ -110,4 +157,4 @@ public void ConfigureServices(IServiceCollection services)
 ```C#
   <a asp-controller="ControllerName" asp-action="GitlabAuthenticate" asp-route-returnUrl="@Context.Request.Path">
 ```
-8. Готово! Вы внедрили сквозную авторизацию через GitLab в свой веб-сервис!
+8. Готово! Вы внедрили сквозную авторизацию GitLab в свой веб-сервис!
