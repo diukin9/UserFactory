@@ -18,27 +18,56 @@ await userFactory.CompareUsersAsync();
 4. Дождитесь завершения работы метода и проверяйте базу данных. Все готово!
 
 ## Пример использования фабрики пользователей в ASP.NET Core:
-```C#
-public class ExampleController : Controller
-{
-   private readonly UserFactory<ApplicationUser> _userFactory;
-   private readonly UserManager<ApplicationUser> _userManager;
+    1. Создадим extension-метод к HttpContext:
+    ```C#
+    public static class HttpContextExtensions
+    {
+        public static async Task<AuthenticationScheme[]> GetExternalProvidersAsync(this HttpContext context)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+            var schemes = context.RequestServices.GetRequiredService<IAuthenticationSchemeProvider>();
+            return (from scheme in await schemes.GetAllSchemesAsync()
+                where !string.IsNullOrEmpty(scheme.DisplayName)
+                select scheme).ToArray();
+        }
 
-   public ExampleController(UserManager<ApplicationUser> userManager, IOptions<GitlabSettings> gitlabSettings)
-   {
-      _userManager = userManager;
-      var url = gitlabSettings.Value.HostUrl;
-      var token = gitlabSettings.Value.Token;
-      _userFactory = new UserFactory(_userManager, url, token);
-   }
+      public static async Task<bool> IsProviderSupportedAsync(this HttpContext context, string provider)
+      {
+          if (context == null)
+          {
+              throw new ArgumentNullException(nameof(context));
+          }
+          return (from scheme in await context.GetExternalProvidersAsync()
+              where string.Equals(scheme.Name, provider, StringComparison.OrdinalIgnoreCase)
+              select scheme).Any();
+      }
+    }
+    ```
+    2. В контроллере пропишем следующее:
+      ```C#
+      public class ExampleController : Controller
+      {
+           private readonly UserFactory<ApplicationUser> _userFactory;
+           private readonly UserManager<ApplicationUser> _userManager;
 
-   public async Task<IActionResult> UpdateGitlabUsers()
-   {
-      await _userFactory.CompareUsersAsync();
-      return RedirectToAction(nameof(Index));
-   }
-}
-```
+           public ExampleController(UserManager<ApplicationUser> userManager, IOptions<GitlabSettings> gitlabSettings)
+           {
+                _userManager = userManager;
+                var url = gitlabSettings.Value.HostUrl;
+                var token = gitlabSettings.Value.Token;
+                _userFactory = new UserFactory(_userManager, url, token);
+           }
+
+           public async Task<IActionResult> UpdateGitlabUsers()
+           {
+                await _userFactory.CompareUsersAsync();
+                return RedirectToAction(nameof(Index));
+           }
+      }
+      ```
 
 ## Пример переопределения методов создания и обновления пользователей в UserFactory:
 ```C#
