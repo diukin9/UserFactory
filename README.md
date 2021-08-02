@@ -17,28 +17,28 @@ await userFactory.CompareUsersAsync();
 ```
 4. Дождитесь завершения работы метода и проверяйте базу данных. Все готово!
 
-## Пример использования фабрики пользователей в ASP.NET Cor
-      ```C#
-      public class ExampleController : Controller
-      {
-           private readonly UserFactory<ApplicationUser> _userFactory;
-           private readonly UserManager<ApplicationUser> _userManager;
+## Пример использования фабрики пользователей в ASP.NET Core
+```C#
+public class ExampleController : Controller
+{
+     private readonly UserFactory<ApplicationUser> _userFactory;
+     private readonly UserManager<ApplicationUser> _userManager;
 
-           public ExampleController(UserManager<ApplicationUser> userManager, IOptions<GitlabSettings> gitlabSettings)
-           {
-                _userManager = userManager;
-                var url = gitlabSettings.Value.HostUrl;
-                var token = gitlabSettings.Value.Token;
-                _userFactory = new UserFactory(_userManager, url, token);
-           }
+     public ExampleController(UserManager<ApplicationUser> userManager, IOptions<GitlabSettings> gitlabSettings)
+     {
+          _userManager = userManager;
+          var url = gitlabSettings.Value.HostUrl;
+          var token = gitlabSettings.Value.Token;
+          _userFactory = new UserFactory(_userManager, url, token);
+     }
 
-           public async Task<IActionResult> UpdateGitlabUsers()
-           {
-                await _userFactory.CompareUsersAsync();
-                return RedirectToAction(nameof(Index));
-           }
-      }
-      ```
+     public async Task<IActionResult> UpdateGitlabUsers()
+     {
+          await _userFactory.CompareUsersAsync();
+          return RedirectToAction(nameof(Index));
+     }
+}
+```
 
 ## Пример переопределения методов создания и обновления пользователей в UserFactory:
 ```C#
