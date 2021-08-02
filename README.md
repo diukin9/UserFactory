@@ -17,36 +17,7 @@ await userFactory.CompareUsersAsync();
 ```
 4. Дождитесь завершения работы метода и проверяйте базу данных. Все готово!
 
-## Пример использования фабрики пользователей в ASP.NET Core:
-    1. Создадим extension-метод к HttpContext:
-```C#
-public static class HttpContextExtensions
-{
-    public static async Task<AuthenticationScheme[]> GetExternalProvidersAsync(this HttpContext context)
-    {
-        if (context == null)
-        {
-            throw new ArgumentNullException(nameof(context));
-        }
-        var schemes = context.RequestServices.GetRequiredService<IAuthenticationSchemeProvider>();
-        return (from scheme in await schemes.GetAllSchemesAsync()
-            where !string.IsNullOrEmpty(scheme.DisplayName)
-            select scheme).ToArray();
-    }
-
-  public static async Task<bool> IsProviderSupportedAsync(this HttpContext context, string provider)
-  {
-      if (context == null)
-      {
-          throw new ArgumentNullException(nameof(context));
-      }
-      return (from scheme in await context.GetExternalProvidersAsync()
-          where string.Equals(scheme.Name, provider, StringComparison.OrdinalIgnoreCase)
-          select scheme).Any();
-  }
-}
-```
-    2. В контроллере пропишем следующее:
+## Пример использования фабрики пользователей в ASP.NET Cor
       ```C#
       public class ExampleController : Controller
       {
@@ -158,7 +129,35 @@ public void ConfigureServices(IServiceCollection services)
   ...
 }
 ```
-6. В контроллер добавьте следующее (при необходимости переделайте логику методов под себя):
+6. Добавьте extension-метод к HttpContext:
+```C#
+public static class HttpContextExtensions
+{
+    public static async Task<AuthenticationScheme[]> GetExternalProvidersAsync(this HttpContext context)
+    {
+        if (context == null)
+        {
+            throw new ArgumentNullException(nameof(context));
+        }
+        var schemes = context.RequestServices.GetRequiredService<IAuthenticationSchemeProvider>();
+        return (from scheme in await schemes.GetAllSchemesAsync()
+            where !string.IsNullOrEmpty(scheme.DisplayName)
+            select scheme).ToArray();
+    }
+
+  public static async Task<bool> IsProviderSupportedAsync(this HttpContext context, string provider)
+  {
+      if (context == null)
+      {
+          throw new ArgumentNullException(nameof(context));
+      }
+      return (from scheme in await context.GetExternalProvidersAsync()
+          where string.Equals(scheme.Name, provider, StringComparison.OrdinalIgnoreCase)
+          select scheme).Any();
+  }
+}
+```
+7. В контроллер добавьте следующее (при необходимости переделайте логику методов под себя):
 ```C#
   [HttpGet]
   [HttpPost]
@@ -207,8 +206,8 @@ public void ConfigureServices(IServiceCollection services)
       return View(nameof(Login));
   }
 ```
-7. Осталось только добавить кнопку/ссылку/форму и т.п. во View-представлении, ссылающуюся на метод GitlabAuthenticate, например:
+8. Осталось только добавить кнопку/ссылку/форму и т.п. во View-представлении, ссылающуюся на метод GitlabAuthenticate, например:
 ```C#
   <a asp-controller="ControllerName" asp-action="GitlabAuthenticate" asp-route-returnUrl="@Context.Request.Path">
 ```
-8. Готово! Вы внедрили сквозную авторизацию GitLab в свой веб-сервис!
+9. Готово! Вы внедрили сквозную авторизацию GitLab в свой веб-сервис!
